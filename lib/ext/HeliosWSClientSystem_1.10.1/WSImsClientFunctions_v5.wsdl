@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="de.adtech.helios.WSImsClient_v5.WSImsClientFunctions_v5"
+    targetNamespace="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:map="http://systinet.com/mapping/"
+    xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/">
+    <types>
+        <xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://systinet.com/containers/literal/ms.net"
+            xmlns:map="http://systinet.com/mapping/"
+            xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:tns="http://systinet.com/containers/literal/ms.net"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:complexType name="Collection">
+                <xsd:sequence>
+                    <xsd:element name="Items" type="tns:ArrayOfAnyType"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="List">
+                <xsd:complexContent mixed="false">
+                    <xsd:extension base="tns:Collection"/>
+                </xsd:complexContent>
+            </xsd:complexType>
+            <xsd:complexType name="ArrayList">
+                <xsd:complexContent mixed="false">
+                    <xsd:extension base="tns:List"/>
+                </xsd:complexContent>
+            </xsd:complexType>
+            <xsd:complexType name="LinkedList">
+                <xsd:complexContent mixed="false">
+                    <xsd:extension base="tns:List"/>
+                </xsd:complexContent>
+            </xsd:complexType>
+            <xsd:complexType name="Vector">
+                <xsd:complexContent mixed="false">
+                    <xsd:extension base="tns:List"/>
+                </xsd:complexContent>
+            </xsd:complexType>
+            <xsd:complexType name="Set">
+                <xsd:complexContent mixed="false">
+                    <xsd:extension base="tns:Collection"/>
+                </xsd:complexContent>
+            </xsd:complexType>
+            <xsd:complexType name="HashSet">
+                <xsd:complexContent mixed="false">
+                    <xsd:extension base="tns:Set"/>
+                </xsd:complexContent>
+            </xsd:complexType>
+            <xsd:complexType name="SortedSet">
+                <xsd:complexContent mixed="false">
+                    <xsd:extension base="tns:Set"/>
+                </xsd:complexContent>
+            </xsd:complexType>
+            <xsd:complexType name="TreeSet">
+                <xsd:complexContent mixed="false">
+                    <xsd:extension base="tns:SortedSet"/>
+                </xsd:complexContent>
+            </xsd:complexType>
+            <xsd:complexType name="Map">
+                <xsd:sequence>
+                    <xsd:element name="Keys" type="tns:ArrayOfAnyType"/>
+                    <xsd:element name="Values" type="tns:ArrayOfAnyType"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Hashtable">
+                <xsd:complexContent mixed="false">
+                    <xsd:extension base="tns:Map"/>
+                </xsd:complexContent>
+            </xsd:complexType>
+            <xsd:complexType name="Properties">
+                <xsd:complexContent mixed="false">
+                    <xsd:extension base="tns:Hashtable"/>
+                </xsd:complexContent>
+            </xsd:complexType>
+            <xsd:complexType name="HashMap">
+                <xsd:complexContent mixed="false">
+                    <xsd:extension base="tns:Map"/>
+                </xsd:complexContent>
+            </xsd:complexType>
+            <xsd:complexType name="SortedMap">
+                <xsd:complexContent mixed="false">
+                    <xsd:extension base="tns:Map"/>
+                </xsd:complexContent>
+            </xsd:complexType>
+            <xsd:complexType name="TreeMap">
+                <xsd:complexContent mixed="false">
+                    <xsd:extension base="tns:SortedMap"/>
+                </xsd:complexContent>
+            </xsd:complexType>
+            <xsd:complexType name="Iterator">
+                <xsd:sequence>
+                    <xsd:element name="Data" type="tns:ArrayOfAnyType"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Enumeration">
+                <xsd:sequence>
+                    <xsd:element name="Data" type="tns:ArrayOfAnyType"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ArrayOfAnyType">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" name="Item"
+                        nillable="true"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+        <xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://systinet.com/wsdl/java/lang/"
+            xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:tns="http://systinet.com/wsdl/java/lang/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:complexType name="ArrayOflong">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type name="[Ljava.lang.Long;"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" name="long"
+                        nillable="true" type="xsd:long"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+        <xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/"
+            xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:complexType name="PlacementAvailsData">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="de.adtech.helios.WSImsClient_v5.PlacementAvailsData"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="avails" type="xsd:long"/>
+                    <xsd:element name="placementId" type="xsd:long"/>
+                    <xsd:element name="websiteId" type="xsd:long"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ArrayOfPlacementAvailsData">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="[Lde.adtech.helios.WSImsClient_v5.PlacementAvailsData;"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0"
+                        name="PlacementAvailsData" nillable="true"
+                        type="tns:PlacementAvailsData"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ReservationGoal">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="de.adtech.helios.WSImsClient_v5.ReservationGoal"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="desiredImpressions" type="xsd:long"/>
+                    <xsd:element name="guaranteedImpressions" type="xsd:long"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+        <xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:map="http://systinet.com/mapping/"
+            xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:tns="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:xns4="http://systinet.com/wsdl/de/adtech/ims3/iface/"
+            xmlns:xns5="http://systinet.com/wsdl/java/lang/"
+            xmlns:xns6="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/"
+            xmlns:xns7="http://systinet.com/containers/literal/ms.net"
+            xmlns:xns8="http://systinet.com/wsdl/de/adtech/ims3/ifacereport/summary/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import
+            namespace="http://systinet.com/wsdl/de/adtech/ims3/ifacereport/summary/"/>
+            <xsd:import
+            namespace="http://systinet.com/containers/literal/ms.net"/>
+            <xsd:import
+            namespace="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/"/>
+            <xsd:import namespace="http://systinet.com/wsdl/java/lang/"/>
+            <xsd:import
+            namespace="http://systinet.com/wsdl/de/adtech/ims3/iface/"/>
+            <xsd:element name="rangeToAdd" nillable="true"
+                type="xns4:IDateRange"/>
+            <xsd:element name="idoox-java-mapping.java.lang.Exception"
+                nillable="true" type="xsd:anyType"/>
+            <xsd:element name="campaignId" nillable="true" type="xsd:long"/>
+            <xsd:element name="boolean_Response" nillable="true"
+                type="xsd:boolean"/>
+            <xsd:element name="long_Response" nillable="true" type="xsd:long"/>
+            <xsd:element name="startAt" nillable="true" type="xsd:dateTime"/>
+            <xsd:element name="endAt" nillable="true" type="xsd:dateTime"/>
+            <xsd:element name="placementIds" nillable="true"
+                type="xns5:ArrayOflong"/>
+            <xsd:element name="startDate" type="xsd:int"/>
+            <xsd:element name="endDate" type="xsd:int"/>
+            <xsd:element name="ArrayOfPlacementAvailsData_Response"
+                nillable="true" type="xns6:ArrayOfPlacementAvailsData"/>
+            <xsd:element name="websiteId" nillable="true" type="xsd:long"/>
+            <xsd:element name="plcId" nillable="true" type="xsd:long"/>
+            <xsd:element name="ArrayOfIDateRange_Response" nillable="true"
+                type="xns4:ArrayOfIDateRange"/>
+            <xsd:element name="Vector_Response" nillable="true"
+                type="xns7:Vector"/>
+            <xsd:element name="ArrayOfIRepDateSummaryInfo_Response"
+                nillable="true" type="xns8:ArrayOfIRepDateSummaryInfo"/>
+            <xsd:element name="deliveryGoal" nillable="true"
+                type="xns6:ReservationGoal"/>
+            <xsd:element name="rangeToModify" nillable="true"
+                type="xns4:IDateRange"/>
+            <xsd:element name="newRange" nillable="true"
+                type="xns4:IDateRange"/>
+            <xsd:element name="rangeToRemove" nillable="true"
+                type="xns4:IDateRange"/>
+        </xsd:schema>
+        <xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://systinet.com/wsdl/de/adtech/ims3/ifacereport/summary/"
+            xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:tns="http://systinet.com/wsdl/de/adtech/ims3/ifacereport/summary/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:complexType name="IRepDateSummaryInfo">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="de.adtech.ims3.ifacereport.summary.IRepDateSummaryInfo"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="day" type="xsd:int"/>
+                    <xsd:element name="reserved" type="xsd:long"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ArrayOfIRepDateSummaryInfo">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="[Lde.adtech.ims3.ifacereport.summary.IRepDateSummaryInfo;"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0"
+                        name="IRepDateSummaryInfo" nillable="true"
+                        type="tns:IRepDateSummaryInfo"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+        <xsd:schema elementFormDefault="qualified"
+            targetNamespace="http://systinet.com/wsdl/de/adtech/ims3/iface/"
+            xmlns:ns0="http://systinet.com/xsd/SchemaTypes/"
+            xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+            xmlns:tns="http://systinet.com/wsdl/de/adtech/ims3/iface/"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:complexType name="IDateRange">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type name="de.adtech.ims3.iface.IDateRange"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="capacity" type="xsd:int"/>
+                    <xsd:element name="endDate" type="xsd:int"/>
+                    <xsd:element name="networkId" type="xsd:int"/>
+                    <xsd:element name="placementId" type="xsd:int"/>
+                    <xsd:element name="startDate" type="xsd:int"/>
+                    <xsd:element name="subNetworkId" type="xsd:int"/>
+                    <xsd:element name="usesOverride" type="xsd:boolean"/>
+                    <xsd:element name="webSiteId" type="xsd:int"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ArrayOfIDateRange">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <map:java-type
+                        name="[Lde.adtech.ims3.iface.IDateRange;"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0"
+                        name="IDateRange" nillable="true"
+                        type="tns:IDateRange"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </types>
+    <message name="Exception">
+        <part element="ns0:idoox-java-mapping.java.lang.Exception"
+            name="idoox-java-mapping.java.lang.Exception"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_addIMSOverrideForPlacement_Request_Soap">
+        <part element="ns0:rangeToAdd" name="rangeToAdd"/>
+    </message>
+    <message
+    name="WSImsClientFunctions_v5_addIMSOverrideForPlacement_Response_Soap"/>
+    <message name="WSImsClientFunctions_v5_freeReservationByCampaignId_Request_Soap">
+        <part element="ns0:campaignId" name="campaignId"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_freeReservationByCampaignId_Response_Soap">
+        <part element="ns0:boolean_Response" name="response"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_getAvailsByCampaignIdByDateRange_Request_Soap">
+        <part element="ns0:campaignId" name="campaignId"/>
+        <part element="ns0:startAt" name="startAt"/>
+        <part element="ns0:endAt" name="endAt"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_getAvailsByCampaignIdByDateRange_Response_Soap">
+        <part element="ns0:long_Response" name="response"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_getAvailsByCampaignId_Request_Soap">
+        <part element="ns0:campaignId" name="campaignId"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_getAvailsByCampaignId_Response_Soap">
+        <part element="ns0:long_Response" name="response"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_getAvailsByPlacementIds_Request_Soap">
+        <part element="ns0:placementIds" name="placementIds"/>
+        <part element="ns0:startDate" name="startDate"/>
+        <part element="ns0:endDate" name="endDate"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_getAvailsByPlacementIds_Response_Soap">
+        <part element="ns0:long_Response" name="response"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_getAvailsByPlacementsByDateRange_Request_Soap">
+        <part element="ns0:placementIds" name="placementIds"/>
+        <part element="ns0:startDate" name="startDate"/>
+        <part element="ns0:endDate" name="endDate"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_getAvailsByPlacementsByDateRange_Response_Soap">
+        <part element="ns0:ArrayOfPlacementAvailsData_Response"
+            name="response"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_getIMSOverrideDataByPlacementId_Request_Soap">
+        <part element="ns0:websiteId" name="websiteId"/>
+        <part element="ns0:plcId" name="plcId"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_getIMSOverrideDataByPlacementId_Response_Soap">
+        <part element="ns0:ArrayOfIDateRange_Response" name="response"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_getSummaryAllocationInfoByPlacementIdsTyped_Request_Soap">
+        <part element="ns0:startDate" name="startDate"/>
+        <part element="ns0:endDate" name="endDate"/>
+        <part element="ns0:placementIds" name="placementIds"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_getSummaryAllocationInfoByPlacementIdsTyped_Response_Soap">
+        <part element="ns0:ArrayOfIRepDateSummaryInfo_Response"
+            name="response"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_getSummaryAllocationInfoByPlacementIds_Request_Soap">
+        <part element="ns0:startDate" name="startDate"/>
+        <part element="ns0:endDate" name="endDate"/>
+        <part element="ns0:placementIds" name="placementIds"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_getSummaryAllocationInfoByPlacementIds_Response_Soap">
+        <part element="ns0:Vector_Response" name="response"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_makeOverbookedReservationByCampaignId_Request_Soap">
+        <part element="ns0:campaignId" name="campaignId"/>
+        <part element="ns0:deliveryGoal" name="deliveryGoal"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_makeOverbookedReservationByCampaignId_Response_Soap">
+        <part element="ns0:boolean_Response" name="response"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_makeReservationByCampaignId_Request_Soap">
+        <part element="ns0:campaignId" name="campaignId"/>
+        <part element="ns0:deliveryGoal" name="deliveryGoal"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_makeReservationByCampaignId_Response_Soap">
+        <part element="ns0:boolean_Response" name="response"/>
+    </message>
+    <message name="WSImsClientFunctions_v5_modifyIMSOverrideForPlacement_Request_Soap">
+        <part element="ns0:rangeToModify" name="rangeToModify"/>
+        <part element="ns0:newRange" name="newRange"/>
+    </message>
+    <message
+    name="WSImsClientFunctions_v5_modifyIMSOverrideForPlacement_Response_Soap"/>
+    <message name="WSImsClientFunctions_v5_removeIMSOverrideFromPlacement_Request_Soap">
+        <part element="ns0:rangeToRemove" name="rangeToRemove"/>
+    </message>
+    <message
+    name="WSImsClientFunctions_v5_removeIMSOverrideFromPlacement_Response_Soap"/>
+    <portType name="WSImsClientFunctions_v5">
+        <operation name="addIMSOverrideForPlacement"
+            parameterOrder="rangeToAdd">
+            <input
+            message="tns:WSImsClientFunctions_v5_addIMSOverrideForPlacement_Request_Soap"/>
+            <output
+            message="tns:WSImsClientFunctions_v5_addIMSOverrideForPlacement_Response_Soap"/>
+            <fault message="tns:Exception" name="Exception"/>
+        </operation>
+        <operation name="freeReservationByCampaignId"
+            parameterOrder="campaignId">
+            <input
+            message="tns:WSImsClientFunctions_v5_freeReservationByCampaignId_Request_Soap"/>
+            <output
+            message="tns:WSImsClientFunctions_v5_freeReservationByCampaignId_Response_Soap"/>
+            <fault message="tns:Exception" name="Exception"/>
+        </operation>
+        <operation name="getAvailsByCampaignId" parameterOrder="campaignId">
+            <input
+            message="tns:WSImsClientFunctions_v5_getAvailsByCampaignId_Request_Soap"/>
+            <output
+            message="tns:WSImsClientFunctions_v5_getAvailsByCampaignId_Response_Soap"/>
+            <fault message="tns:Exception" name="Exception"/>
+        </operation>
+        <operation name="getAvailsByCampaignIdByDateRange"
+            parameterOrder="campaignId startAt endAt">
+            <input
+            message="tns:WSImsClientFunctions_v5_getAvailsByCampaignIdByDateRange_Request_Soap"/>
+            <output
+            message="tns:WSImsClientFunctions_v5_getAvailsByCampaignIdByDateRange_Response_Soap"/>
+            <fault message="tns:Exception" name="Exception"/>
+        </operation>
+        <operation name="getAvailsByPlacementIds"
+            parameterOrder="placementIds startDate endDate">
+            <input
+            message="tns:WSImsClientFunctions_v5_getAvailsByPlacementIds_Request_Soap"/>
+            <output
+            message="tns:WSImsClientFunctions_v5_getAvailsByPlacementIds_Response_Soap"/>
+            <fault message="tns:Exception" name="Exception"/>
+        </operation>
+        <operation name="getAvailsByPlacementsByDateRange"
+            parameterOrder="placementIds startDate endDate">
+            <input
+            message="tns:WSImsClientFunctions_v5_getAvailsByPlacementsByDateRange_Request_Soap"/>
+            <output
+            message="tns:WSImsClientFunctions_v5_getAvailsByPlacementsByDateRange_Response_Soap"/>
+            <fault message="tns:Exception" name="Exception"/>
+        </operation>
+        <operation name="getIMSOverrideDataByPlacementId"
+            parameterOrder="websiteId plcId">
+            <input
+            message="tns:WSImsClientFunctions_v5_getIMSOverrideDataByPlacementId_Request_Soap"/>
+            <output
+            message="tns:WSImsClientFunctions_v5_getIMSOverrideDataByPlacementId_Response_Soap"/>
+            <fault message="tns:Exception" name="Exception"/>
+        </operation>
+        <operation name="getSummaryAllocationInfoByPlacementIds"
+            parameterOrder="startDate endDate placementIds">
+            <input
+            message="tns:WSImsClientFunctions_v5_getSummaryAllocationInfoByPlacementIds_Request_Soap"/>
+            <output
+            message="tns:WSImsClientFunctions_v5_getSummaryAllocationInfoByPlacementIds_Response_Soap"/>
+            <fault message="tns:Exception" name="Exception"/>
+        </operation>
+        <operation name="getSummaryAllocationInfoByPlacementIdsTyped"
+            parameterOrder="startDate endDate placementIds">
+            <input
+            message="tns:WSImsClientFunctions_v5_getSummaryAllocationInfoByPlacementIdsTyped_Request_Soap"/>
+            <output
+            message="tns:WSImsClientFunctions_v5_getSummaryAllocationInfoByPlacementIdsTyped_Response_Soap"/>
+            <fault message="tns:Exception" name="Exception"/>
+        </operation>
+        <operation name="makeOverbookedReservationByCampaignId"
+            parameterOrder="campaignId deliveryGoal">
+            <input
+            message="tns:WSImsClientFunctions_v5_makeOverbookedReservationByCampaignId_Request_Soap"/>
+            <output
+            message="tns:WSImsClientFunctions_v5_makeOverbookedReservationByCampaignId_Response_Soap"/>
+            <fault message="tns:Exception" name="Exception"/>
+        </operation>
+        <operation name="makeReservationByCampaignId"
+            parameterOrder="campaignId deliveryGoal">
+            <input
+            message="tns:WSImsClientFunctions_v5_makeReservationByCampaignId_Request_Soap"/>
+            <output
+            message="tns:WSImsClientFunctions_v5_makeReservationByCampaignId_Response_Soap"/>
+            <fault message="tns:Exception" name="Exception"/>
+        </operation>
+        <operation name="modifyIMSOverrideForPlacement"
+            parameterOrder="rangeToModify newRange">
+            <input
+            message="tns:WSImsClientFunctions_v5_modifyIMSOverrideForPlacement_Request_Soap"/>
+            <output
+            message="tns:WSImsClientFunctions_v5_modifyIMSOverrideForPlacement_Response_Soap"/>
+            <fault message="tns:Exception" name="Exception"/>
+        </operation>
+        <operation name="removeIMSOverrideFromPlacement"
+            parameterOrder="rangeToRemove">
+            <input
+            message="tns:WSImsClientFunctions_v5_removeIMSOverrideFromPlacement_Request_Soap"/>
+            <output
+            message="tns:WSImsClientFunctions_v5_removeIMSOverrideFromPlacement_Response_Soap"/>
+            <fault message="tns:Exception" name="Exception"/>
+        </operation>
+    </portType>
+    <binding name="WSImsClientFunctions_v5" type="tns:WSImsClientFunctions_v5">
+        <soap:binding style="document"
+            transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="addIMSOverrideForPlacement">
+            <map:java-operation name="addIMSOverrideForPlacement"
+                signature="KExkZS9hZHRlY2gvaW1zMy9pZmFjZS9JRGF0ZVJhbmdlOylW">
+                <map:fault java-type="java.lang.Exception" name="Exception"/>
+            </map:java-operation>
+            <soap:operation
+                soapAction="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/WSImsClientFunctions_v5#addIMSOverrideForPlacement?KExkZS9hZHRlY2gvaW1zMy9pZmFjZS9JRGF0ZVJhbmdlOylW"
+                style="document"/>
+            <input>
+                <soap:body parts="rangeToAdd" use="literal"/>
+            </input>
+            <output>
+                <soap:body parts="" use="literal"/>
+            </output>
+            <fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="freeReservationByCampaignId">
+            <map:java-operation name="freeReservationByCampaignId"
+                signature="KExqYXZhL2xhbmcvTG9uZzspTGphdmEvbGFuZy9Cb29sZWFuOw==">
+                <map:fault java-type="java.lang.Exception" name="Exception"/>
+            </map:java-operation>
+            <soap:operation
+                soapAction="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/WSImsClientFunctions_v5#freeReservationByCampaignId?KExqYXZhL2xhbmcvTG9uZzspTGphdmEvbGFuZy9Cb29sZWFuOw=="
+                style="document"/>
+            <input>
+                <soap:body parts="campaignId" use="literal"/>
+            </input>
+            <output>
+                <soap:body parts="response" use="literal"/>
+            </output>
+            <fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="getAvailsByCampaignId">
+            <map:java-operation name="getAvailsByCampaignId"
+                signature="KExqYXZhL2xhbmcvTG9uZzspTGphdmEvbGFuZy9Mb25nOw==">
+                <map:fault java-type="java.lang.Exception" name="Exception"/>
+            </map:java-operation>
+            <soap:operation
+                soapAction="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/WSImsClientFunctions_v5#getAvailsByCampaignId?KExqYXZhL2xhbmcvTG9uZzspTGphdmEvbGFuZy9Mb25nOw=="
+                style="document"/>
+            <input>
+                <soap:body parts="campaignId" use="literal"/>
+            </input>
+            <output>
+                <soap:body parts="response" use="literal"/>
+            </output>
+            <fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="getAvailsByCampaignIdByDateRange">
+            <map:java-operation name="getAvailsByCampaignIdByDateRange"
+                signature="KExqYXZhL2xhbmcvTG9uZztMamF2YS91dGlsL0RhdGU7TGphdmEvdXRpbC9EYXRlOylMamF2YS9sYW5nL0xvbmc7">
+                <map:fault java-type="java.lang.Exception" name="Exception"/>
+            </map:java-operation>
+            <soap:operation
+                soapAction="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/WSImsClientFunctions_v5#getAvailsByCampaignIdByDateRange?KExqYXZhL2xhbmcvTG9uZztMamF2YS91dGlsL0RhdGU7TGphdmEvdXRpbC9EYXRlOylMamF2YS9sYW5nL0xvbmc7"
+                style="document"/>
+            <input>
+                <soap:body parts="campaignId startAt endAt" use="literal"/>
+            </input>
+            <output>
+                <soap:body parts="response" use="literal"/>
+            </output>
+            <fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="getAvailsByPlacementIds">
+            <map:java-operation name="getAvailsByPlacementIds"
+                signature="KFtMamF2YS9sYW5nL0xvbmc7SUkpTGphdmEvbGFuZy9Mb25nOw==">
+                <map:fault java-type="java.lang.Exception" name="Exception"/>
+            </map:java-operation>
+            <soap:operation
+                soapAction="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/WSImsClientFunctions_v5#getAvailsByPlacementIds?KFtMamF2YS9sYW5nL0xvbmc7SUkpTGphdmEvbGFuZy9Mb25nOw=="
+                style="document"/>
+            <input>
+                <soap:body parts="placementIds startDate endDate"
+                    use="literal"/>
+            </input>
+            <output>
+                <soap:body parts="response" use="literal"/>
+            </output>
+            <fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="getAvailsByPlacementsByDateRange">
+            <map:java-operation name="getAvailsByPlacementsByDateRange"
+                signature="KFtMamF2YS9sYW5nL0xvbmc7SUkpW0xkZS9hZHRlY2gvaGVsaW9zL1dTSW1zQ2xpZW50X3Y1L1BsYWNlbWVudEF2YWlsc0RhdGE7">
+                <map:fault java-type="java.lang.Exception" name="Exception"/>
+            </map:java-operation>
+            <soap:operation
+                soapAction="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/WSImsClientFunctions_v5#getAvailsByPlacementsByDateRange?KFtMamF2YS9sYW5nL0xvbmc7SUkpW0xkZS9hZHRlY2gvaGVsaW9zL1dTSW1zQ2xpZW50X3Y1L1BsYWNlbWVudEF2YWlsc0RhdGE7"
+                style="document"/>
+            <input>
+                <soap:body parts="placementIds startDate endDate"
+                    use="literal"/>
+            </input>
+            <output>
+                <soap:body parts="response" use="literal"/>
+            </output>
+            <fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="getIMSOverrideDataByPlacementId">
+            <map:java-operation name="getIMSOverrideDataByPlacementId"
+                signature="KExqYXZhL2xhbmcvTG9uZztMamF2YS9sYW5nL0xvbmc7KVtMZGUvYWR0ZWNoL2ltczMvaWZhY2UvSURhdGVSYW5nZTs=">
+                <map:fault java-type="java.lang.Exception" name="Exception"/>
+            </map:java-operation>
+            <soap:operation
+                soapAction="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/WSImsClientFunctions_v5#getIMSOverrideDataByPlacementId?KExqYXZhL2xhbmcvTG9uZztMamF2YS9sYW5nL0xvbmc7KVtMZGUvYWR0ZWNoL2ltczMvaWZhY2UvSURhdGVSYW5nZTs="
+                style="document"/>
+            <input>
+                <soap:body parts="websiteId plcId" use="literal"/>
+            </input>
+            <output>
+                <soap:body parts="response" use="literal"/>
+            </output>
+            <fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="getSummaryAllocationInfoByPlacementIds">
+            <map:java-operation name="getSummaryAllocationInfoByPlacementIds"
+                signature="KElJW0xqYXZhL2xhbmcvTG9uZzspTGphdmEvdXRpbC9WZWN0b3I7">
+                <map:fault java-type="java.lang.Exception" name="Exception"/>
+            </map:java-operation>
+            <soap:operation
+                soapAction="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/WSImsClientFunctions_v5#getSummaryAllocationInfoByPlacementIds?KElJW0xqYXZhL2xhbmcvTG9uZzspTGphdmEvdXRpbC9WZWN0b3I7"
+                style="document"/>
+            <input>
+                <soap:body parts="startDate endDate placementIds"
+                    use="literal"/>
+            </input>
+            <output>
+                <soap:body parts="response" use="literal"/>
+            </output>
+            <fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="getSummaryAllocationInfoByPlacementIdsTyped">
+            <map:java-operation
+                name="getSummaryAllocationInfoByPlacementIdsTyped"
+                signature="KElJW0xqYXZhL2xhbmcvTG9uZzspW0xkZS9hZHRlY2gvaW1zMy9pZmFjZXJlcG9ydC9zdW1tYXJ5L0lSZXBEYXRlU3VtbWFyeUluZm87">
+                <map:fault java-type="java.lang.Exception" name="Exception"/>
+            </map:java-operation>
+            <soap:operation
+                soapAction="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/WSImsClientFunctions_v5#getSummaryAllocationInfoByPlacementIdsTyped?KElJW0xqYXZhL2xhbmcvTG9uZzspW0xkZS9hZHRlY2gvaW1zMy9pZmFjZXJlcG9ydC9zdW1tYXJ5L0lSZXBEYXRlU3VtbWFyeUluZm87"
+                style="document"/>
+            <input>
+                <soap:body parts="startDate endDate placementIds"
+                    use="literal"/>
+            </input>
+            <output>
+                <soap:body parts="response" use="literal"/>
+            </output>
+            <fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="makeOverbookedReservationByCampaignId">
+            <map:java-operation name="makeOverbookedReservationByCampaignId"
+                signature="KExqYXZhL2xhbmcvTG9uZztMZGUvYWR0ZWNoL2hlbGlvcy9XU0ltc0NsaWVudF92NS9SZXNlcnZhdGlvbkdvYWw7KUxqYXZhL2xhbmcvQm9vbGVhbjs=">
+                <map:fault java-type="java.lang.Exception" name="Exception"/>
+            </map:java-operation>
+            <soap:operation
+                soapAction="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/WSImsClientFunctions_v5#makeOverbookedReservationByCampaignId?KExqYXZhL2xhbmcvTG9uZztMZGUvYWR0ZWNoL2hlbGlvcy9XU0ltc0NsaWVudF92NS9SZXNlcnZhdGlvbkdvYWw7KUxqYXZhL2xhbmcvQm9vbGVhbjs="
+                style="document"/>
+            <input>
+                <soap:body parts="campaignId deliveryGoal" use="literal"/>
+            </input>
+            <output>
+                <soap:body parts="response" use="literal"/>
+            </output>
+            <fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="makeReservationByCampaignId">
+            <map:java-operation name="makeReservationByCampaignId"
+                signature="KExqYXZhL2xhbmcvTG9uZztMZGUvYWR0ZWNoL2hlbGlvcy9XU0ltc0NsaWVudF92NS9SZXNlcnZhdGlvbkdvYWw7KUxqYXZhL2xhbmcvQm9vbGVhbjs=">
+                <map:fault java-type="java.lang.Exception" name="Exception"/>
+            </map:java-operation>
+            <soap:operation
+                soapAction="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/WSImsClientFunctions_v5#makeReservationByCampaignId?KExqYXZhL2xhbmcvTG9uZztMZGUvYWR0ZWNoL2hlbGlvcy9XU0ltc0NsaWVudF92NS9SZXNlcnZhdGlvbkdvYWw7KUxqYXZhL2xhbmcvQm9vbGVhbjs="
+                style="document"/>
+            <input>
+                <soap:body parts="campaignId deliveryGoal" use="literal"/>
+            </input>
+            <output>
+                <soap:body parts="response" use="literal"/>
+            </output>
+            <fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="modifyIMSOverrideForPlacement">
+            <map:java-operation name="modifyIMSOverrideForPlacement"
+                signature="KExkZS9hZHRlY2gvaW1zMy9pZmFjZS9JRGF0ZVJhbmdlO0xkZS9hZHRlY2gvaW1zMy9pZmFjZS9JRGF0ZVJhbmdlOylW">
+                <map:fault java-type="java.lang.Exception" name="Exception"/>
+            </map:java-operation>
+            <soap:operation
+                soapAction="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/WSImsClientFunctions_v5#modifyIMSOverrideForPlacement?KExkZS9hZHRlY2gvaW1zMy9pZmFjZS9JRGF0ZVJhbmdlO0xkZS9hZHRlY2gvaW1zMy9pZmFjZS9JRGF0ZVJhbmdlOylW"
+                style="document"/>
+            <input>
+                <soap:body parts="rangeToModify newRange" use="literal"/>
+            </input>
+            <output>
+                <soap:body parts="" use="literal"/>
+            </output>
+            <fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="removeIMSOverrideFromPlacement">
+            <map:java-operation name="removeIMSOverrideFromPlacement"
+                signature="KExkZS9hZHRlY2gvaW1zMy9pZmFjZS9JRGF0ZVJhbmdlOylW">
+                <map:fault java-type="java.lang.Exception" name="Exception"/>
+            </map:java-operation>
+            <soap:operation
+                soapAction="http://systinet.com/wsdl/de/adtech/helios/WSImsClient_v5/WSImsClientFunctions_v5#removeIMSOverrideFromPlacement?KExkZS9hZHRlY2gvaW1zMy9pZmFjZS9JRGF0ZVJhbmdlOylW"
+                style="document"/>
+            <input>
+                <soap:body parts="rangeToRemove" use="literal"/>
+            </input>
+            <output>
+                <soap:body parts="" use="literal"/>
+            </output>
+            <fault name="Exception">
+                <soap:fault name="Exception" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <service name="WSImsClientFunctions_v5">
+        <port binding="tns:WSImsClientFunctions_v5"
+            name="WSImsClientFunctions_v5">
+            <soap:address
+            location="http://swd-franz.adtech.de:6060/WSImsClientFunctions_v5/"/>
+        </port>
+    </service>
+</definitions>

@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+$: << File.expand_path('../../lib', __FILE__)
+
+# require 'bundler'; Bundler.setup(:default)
+require 'adtech'
+
+config = File.join(File.expand_path('../../conf', __FILE__), 'burttest.xml')
+username = ''
+password = ''
+Adtech::Runner.new(config, username, password)

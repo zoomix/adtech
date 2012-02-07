@@ -2,10 +2,15 @@
 
 $: << File.expand_path('../../lib', __FILE__)
 
+require 'bundler'; Bundler.setup(:default)
+raise ArgumentError, 'Usage: run <config_name>' if ARGV.size < 1
+
+config = YAML.load_file(File.join(File.expand_path('../../config/api', __FILE__), "#{ARGV[0]}.yml"))
+
 # require 'bundler'; Bundler.setup(:default)
 require 'adtech'
 
-config = File.join(File.expand_path('../../conf', __FILE__), 'burttest.xml')
-username = ''
-password = ''
-Adtech::Runner.new(config, username, password)
+configfile = File.join(File.expand_path('../../config/api', __FILE__), config['config'])
+
+adtech = Adtech::Runner.new(configfile, config['username'], config['password'])
+adtech.get_campaigns(1)

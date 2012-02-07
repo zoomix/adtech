@@ -21,7 +21,7 @@ module Adtech
     attr_reader :helios
 
     def initialize(path_to_config_file, username, password)
-      @config_destination_dir = "/tmp/adtech"
+      @config_destination_dir = Dir.tmpdir
       base_conf_dir = File.expand_path('../../ext/HeliosWSClientSystem_1.10.1/conf', __FILE__)
       FileUtils.cp_r(base_conf_dir, @config_destination_dir)
       FileUtils.cp(path_to_config_file, File.join(@config_destination_dir, 'conf', 'clientconf.xml'))
@@ -35,7 +35,7 @@ module Adtech
       @helios.init_services(SERVER_URL, WSDL_URL, @config_destination_dir, @username, @password)
     end
     
-    def get_campaigns
+    def get_campaigns(limit = nil)
       aove = AttributeOperatorValueExpression.new
       aove.setAttribute("statusTypeId")
       aove.setOperator(IAttributeOperatorValueExpression.OP_EQUAL)
@@ -45,9 +45,44 @@ module Adtech
       filter.add(aove)
 
       boolExpression = BoolExpression.new
-      boolExpression.setExpressions(aove)
+      boolExpression.setExpressions(filter)
       
-      list = cs.getCampaignList(nil, nil, boolExpression, nil)
+      puts "Fetching campaigns, will probably take a while..."
+      list = @helios.campaignService.getCampaignList(0.to_java, limit.to_java, boolExpression, nil)
+      puts "Received #{list.length} campaigns"
+      index = 0
+      list.each do |item|
+        c = Campaign.new(item)
+        p c.to_h
+        # data = []
+        # data << index
+        # data << item.name
+        # data << item.campaign_type_id
+        # data << item.getId
+        # data << item.absoluteStartDate.toString
+        # data << item.absoluteEndDate.toString
+        # item.dateRangeList.each do |daterange|
+        #   data << "/"
+        #   data << daterange.deliveryGoal.views
+        #   data << daterange.deliveryGoal.clicks
+        # end
+        # data << ":"
+        # data << item.pricingConfig.invoiceImpressions
+        # data << item.pricingConfig.cpm
+        # data << item.pricingConfig.cpc
+        # data << item.pricingConfig.flatfee
+        # data << item.pricingConfig.target
+        # data << item.pricingConfig.clickrate
+        # data << ":"
+        # data << item.customerPricingConfigs.length
+        # if item.customerPricingConfigs.length > 0
+        #   item.customerPricingConfigs.each do |price|
+        #     data << price.getPrice
+        #   end
+        # end
+        # p data
+        # index += 1
+      end
     end
   end
 end

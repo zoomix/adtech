@@ -7,4 +7,6 @@ $CLASSPATH << "lib/ext/HeliosWSClientSystem_1.10.1"
 $CLASSPATH << "lib/ext/HeliosWSClientSystem_1.10.1/lib"
 require 'ext/HeliosWSClientSystem_1.10.1/HeliosWSClientSystem'
 
+require 'adtech/banner'
+require 'adtech/campaign'
 require 'adtech/runner'

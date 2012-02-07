@@ -51,37 +51,8 @@ module Adtech
       list = @helios.campaignService.getCampaignList(0.to_java, limit.to_java, boolExpression, nil)
       puts "Received #{list.length} campaigns"
       index = 0
-      list.each do |item|
-        c = Campaign.new(item)
-        p c.to_h
-        # data = []
-        # data << index
-        # data << item.name
-        # data << item.campaign_type_id
-        # data << item.getId
-        # data << item.absoluteStartDate.toString
-        # data << item.absoluteEndDate.toString
-        # item.dateRangeList.each do |daterange|
-        #   data << "/"
-        #   data << daterange.deliveryGoal.views
-        #   data << daterange.deliveryGoal.clicks
-        # end
-        # data << ":"
-        # data << item.pricingConfig.invoiceImpressions
-        # data << item.pricingConfig.cpm
-        # data << item.pricingConfig.cpc
-        # data << item.pricingConfig.flatfee
-        # data << item.pricingConfig.target
-        # data << item.pricingConfig.clickrate
-        # data << ":"
-        # data << item.customerPricingConfigs.length
-        # if item.customerPricingConfigs.length > 0
-        #   item.customerPricingConfigs.each do |price|
-        #     data << price.getPrice
-        #   end
-        # end
-        # p data
-        # index += 1
+      list.map do |item|
+        Campaign.new(item)
       end
     end
   end

@@ -27,6 +27,7 @@ module Adtech
       FileUtils.cp(path_to_config_file, File.join(@config_destination_dir, 'conf', 'clientconf.xml'))
       @username = username
       @password = password
+      @cache = Hash.new {|h, k| h[k] = {}}
       startup
     end
     
@@ -52,7 +53,19 @@ module Adtech
       puts "Received #{list.length} campaigns"
       index = 0
       list.map do |item|
-        Campaign.new(item)
+        Campaign.new(item, get_advertiser(item.advertiserId), get_customer(item.customerId))
+      end
+    end
+    
+    def get_advertiser(id)
+      @cache[:advertiser][id] ||= begin
+        @helios.customerService.getAdvertiserById(id, nil)
+      end
+    end
+    
+    def get_customer(id)
+      @cache[:customer][id] ||= begin
+        @helios.customerService.getCustomerById(id, nil)
       end
     end
   end

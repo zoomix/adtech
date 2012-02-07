@@ -1,14 +1,14 @@
 module Adtech
   class Campaign
-    FIELDS = [:name, :campaign_id, :cpm, :cpc, :flatfee, :target]
+    FIELDS = [:name, :advertiser, :customer, :campaign_id, :cpm, :cpc, :flatfee, :target]
     attr_reader *FIELDS
     attr_reader :banners
     
-    def initialize(init)
+    def initialize(init, advertiser = nil, customer = nil)
       if init.is_a?(Hash)
         from_hash(init)
       else
-        from_api(init)
+        from_api(init, advertiser, customer)
       end
     end
     
@@ -22,13 +22,15 @@ module Adtech
     end
     
     private
-    def from_api(api_campaign)
+    def from_api(api_campaign, advertiser, customer)
       @name = api_campaign.name
       @campaign_id = api_campaign.getId
       @cpm = api_campaign.pricingConfig.cpm
       @cpc = api_campaign.pricingConfig.cpc
       @flatfee = api_campaign.pricingConfig.flatfee
       @target = api_campaign.pricingConfig.target
+      @advertiser = advertiser.name if advertiser
+      @customer = customer.name if customer
       @banners = []
       api_campaign.getBannerTimeRangeList.each do |timerange|
         timerange.getBannerInfoList.each do |banner|

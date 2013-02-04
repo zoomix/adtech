@@ -56,6 +56,29 @@ module Adtech
         Campaign.new(item, get_advertiser(item.advertiserId), get_customer(item.customerId))
       end
     end
+
+
+    def get_campaign_reports(limit = nil)
+      aove = AttributeOperatorValueExpression.new
+      aove.setAttribute("statusTypeId")
+      aove.setOperator(IAttributeOperatorValueExpression.OP_EQUAL)
+      aove.setValue(ICampaign.STATUS_ACTIVE)
+      
+      filter = java.util.Vector.new
+      filter.add(aove)
+
+      boolExpression = BoolExpression.new
+      boolExpression.setExpressions(filter)
+      
+      puts "Fetching campaigns, will probably take a while..."
+      campaigns = @helios.campaignService.getCampaignList(0.to_java, limit.to_java, boolExpression, nil)
+      puts "Received #{campaigns.length} campaigns. Getting statistics"
+      campaigns.reduce([]) do |campaign_reports, raw_campaign|
+        raw_report = @helios.statisticsService.get_campaign_statistics_by_campaign_id(raw_campaign.get_id)
+        campaign_reports << CampaignReport.new(raw_report, raw_campaign, get_advertiser(raw_campaign.advertiserId), get_customer(raw_campaign.customerId)) if raw_report
+        campaign_reports
+      end
+    end
     
     def get_advertiser(id)
       @cache[:advertiser][id] ||= begin

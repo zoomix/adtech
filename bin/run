@@ -12,5 +12,5 @@ require 'adtech'
 
 configfile = File.join(File.expand_path('../../config/api', __FILE__), config['config'])
 
-adtech = Adtech::Runner.new(configfile, config['username'], config['password'])
-p adtech.get_campaigns
+adtech = Adtech::Runner.new(configfile, config['user'], config['password'])
+puts *adtech.get_campaign_reports(50).map(&:to_h)

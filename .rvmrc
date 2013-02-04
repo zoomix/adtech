@@ -1,1 +1,1 @@
-rvm --create use jruby-1.6.4@adtech
+rvm --create use jruby-1.6.8@adtech

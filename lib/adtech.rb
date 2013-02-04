@@ -9,4 +9,5 @@ require 'ext/HeliosWSClientSystem_1.10.1/HeliosWSClientSystem'
 
 require 'adtech/banner'
 require 'adtech/campaign'
+require 'adtech/campaign_report'
 require 'adtech/runner'
